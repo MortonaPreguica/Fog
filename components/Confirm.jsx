@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import { QuestionContext } from "../context/QuestionContext";
-
+import QuestionList from "../questions";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Confirm({ children }) {
-  const { correto } = useContext(QuestionContext);
+export default function Confirm({
+  correto,
+  bringQuestion,
+  setShowFinish,
+  currentQuestion,
+}) {
   return (
     <div
       className={classNames(
@@ -14,8 +16,21 @@ export default function Confirm({ children }) {
         "flex absolute bottom-0 justify-around w-full h-20 items-center"
       )}
     >
-      <button className={classNames(correto ? "bg-green-400" : "bg-red-400")}>
-        Next
+      {!correto && (
+        <div>
+          <h4>A resposta correta era: </h4>
+          <p>{QuestionList[currentQuestion].correct}</p>
+        </div>
+      )}
+      <button
+        className={classNames(correto ? "bg-green-400" : "bg-red-400")}
+        onClick={
+          currentQuestion + 1 === QuestionList.length
+            ? () => setShowFinish(true)
+            : bringQuestion
+        }
+      >
+        {currentQuestion + 1 === QuestionList.length ? "Finalizar" : "Next"}
       </button>
     </div>
   );

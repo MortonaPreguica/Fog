@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { QuestionContext } from "../context/QuestionContext";
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ButtonGreen({ children, onClick }) {
-  const { questionClick } = useContext(QuestionContext);
+export default function ButtonGreen({
+  children,
+  submitQuestion,
+  questionClick,
+}) {
   return (
     <button
       className={classNames(
@@ -15,7 +15,7 @@ export default function ButtonGreen({ children, onClick }) {
           : "bg-gray-500 text-gray-400",
         "text-lg  p-1  w-72 rounded-lg shadow-md font-semibold"
       )}
-      onClick={() => onClick}
+      onClick={() => submitQuestion()}
     >
       {children}
     </button>

@@ -14,7 +14,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e) {
-    e.prevent.default();
+    e.preventdefault();
 
     const body = {
       email: e.currentTarget.email.value,

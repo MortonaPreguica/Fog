@@ -1,48 +1,48 @@
-import { createContext, useEffect, useState } from "react";
-import questions from "../questions.json";
-import Modal from "../components/Modal";
-export const QuestionContext = createContext();
+// import { createContext, useEffect, useState } from "react";
+// import questions from "../questions.json";
+// import Modal from "../components/Modal";
+// export const QuestionContext = createContext();
 
-export function QuestionProvider({ children }) {
-  // States
-  const [activeQuestion, setActiveQuestion] = useState(null);
-  const [questionClick, setQuestionClick] = useState(false);
-  const [correto, setCorreto] = useState(null);
+// export function QuestionProvider({ children }) {
+//   // States
+//   const [activeQuestion, setActiveQuestion] = useState(" ");
+//   const [questionClick, setQuestionClick] = useState("");
+//   const [correto, setCorreto] = useState(false);
 
-  {
-    /*useEffect(() => {
+//   useEffect(() => {
+//     console.log(questionClick);
+//   }, [questionClick]);
 
-  }, [questionClick])*/
-  }
+//   // Functions
+//   function startQuestion(e) {
+//     console.log("sla");
+//     const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+//     const currentQuestion = questions[randomQuestionIndex];
 
-  // Functions
-  function startQuestion(e) {
-    const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-    const currentQuestion = questions[randomQuestionIndex];
+//     setActiveQuestion(currentQuestion);
+//   }
 
-    setActiveQuestion(currentQuestion);
-  }
-
-  function submitQuestion(e) {
-    if (activeQuestion.correct === questionClick) {
-      setCorreto(true);
-    } else {
-      setCorreto(false);
-    }
-  }
-  // Render boy
-  return (
-    <QuestionContext.Provider
-      value={{
-        startQuestion,
-        activeQuestion,
-        setQuestionClick,
-        submitQuestion,
-        questionClick,
-        correto,
-      }}
-    >
-      {children}
-    </QuestionContext.Provider>
-  );
-}
+//   function submitQuestion(e) {
+//     console.log("sla");
+//     if (activeQuestion.correct === questionClick) {
+//       setCorreto(true);
+//     } else {
+//       setCorreto(false);
+//     }
+//   }
+//   // Render boy
+//   return (
+//     <QuestionContext.Provider
+//       value={{
+//         startQuestion,
+//         activeQuestion,
+//         setQuestionClick,
+//         submitQuestion,
+//         questionClick,
+//         correto,
+//       }}
+//     >
+//       {children}
+//     </QuestionContext.Provider>
+//   );
+// }
